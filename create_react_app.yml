@@ -16,6 +16,7 @@ Parameters:
   GithubBranch:
     Type: String
     Default: main
+    Description: "e.g. master or main"
   
 Resources:
   CodePipeline:
@@ -158,7 +159,7 @@ Resources:
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
-        Image: "aws/codebuild/nodejs:14.15.4"
+        Image: "aws/codebuild/standard:2.0"
       Source:
         Type: CODEPIPELINE
         BuildSpec: !Sub |
