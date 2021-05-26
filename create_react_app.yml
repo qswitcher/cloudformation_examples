@@ -2,17 +2,20 @@ AWSTemplateFormatVersion: 2010-09-09
 Parameters: 
   ProjectSource: 
     Type: String
-    Default: "https://github.com/qswitcher/imgterest"
+    Default: "https://github.com/christianswanepoel/CodePipelineReact"
     Description: "Source control URL (e.g. Github)"
   GithubOwner:
     Type: String
-    Default: qswitcher
+    Default: christianswanepoel
   GithubRepo:
     Type: String
     Default: my-test-app
   GithubOAuthToken:
     Type: String
     Description: "Github personal access token"
+  GithubBranch:
+    Type: String
+    Default: main
   
 Resources:
   CodePipeline:
@@ -39,7 +42,7 @@ Resources:
               Configuration:
                 Owner: !Ref GithubOwner
                 Repo: !Ref GithubRepo
-                Branch: master
+                Branch: !Ref GithubBranch
                 OAuthToken: !Ref GithubOAuthToken
         - 
           Name: Build
@@ -155,7 +158,7 @@ Resources:
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
-        Image: "aws/codebuild/nodejs:8.11.0"
+        Image: "aws/codebuild/nodejs:14.15.4"
       Source:
         Type: CODEPIPELINE
         BuildSpec: !Sub |
