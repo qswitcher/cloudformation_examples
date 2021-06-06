@@ -2,11 +2,11 @@ AWSTemplateFormatVersion: 2010-09-09
 Parameters: 
   ProjectSource: 
     Type: String
-    Default: "https://github.com/christianswanepoel/CodePipelineReact"
+    Default: "https://github.com/qswitcher/imgterest"
     Description: "Source control URL (e.g. Github)"
   GithubOwner:
     Type: String
-    Default: christianswanepoel
+    Default: qswitcher
   GithubRepo:
     Type: String
     Default: my-test-app
